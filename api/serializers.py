@@ -36,6 +36,12 @@ def in_channel_response(quote, path=None):
 
     if attachment:
         response['attachments'].append(attachment)
+        
+    if english_translation:
+        attachment['text'] = quote.english_translation
+        
+    if english_context:
+        attachment['text'] = quote.english_context
 
     if quote.tile.exists():
         response['attachments'].append({
